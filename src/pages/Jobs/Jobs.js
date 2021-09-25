@@ -1,11 +1,22 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, ActivityIndicator} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import styles from './Jobs.styles';
+import useFetch from '../../hooks/useFetch';
 
 function Jobs() {
+  const {data, loading, error} = useFetch();
+
   return (
     <View style={styles.container}>
-      <Text>fsfjlsdf</Text>
+      {loading == true ? (
+        <ActivityIndicator color="blue" />
+      ) : (
+        <FlatList
+          data={data}
+          renderItem={({item}) => <Text>{item.name}</Text>}
+        />
+      )}
     </View>
   );
 }
