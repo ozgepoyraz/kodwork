@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, ActivityIndicator} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {View, ActivityIndicator} from 'react-native';
+import {FlatList, TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import styles from './Jobs.styles';
 import useFetch from '../../hooks/useFetch';
 import JobCard from '../../components/JobCard';
 
-function Jobs() {
+function Jobs({navigation}) {
   const {data, loading, error} = useFetch();
 
   return (
@@ -15,7 +15,15 @@ function Jobs() {
       ) : (
         <FlatList
           data={data}
-          renderItem={({item}) => <JobCard data={item}></JobCard>}
+          renderItem={({item}) => (
+            <TouchableWithoutFeedback
+              onPress={() => {
+                navigation.navigate('Details', {item});
+                console.log('basıdi');
+              }}>
+              <JobCard data={item}></JobCard>
+            </TouchableWithoutFeedback>
+          )}
         />
       )}
     </View>

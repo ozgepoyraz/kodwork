@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableWithoutFeedback} from 'react-native';
 import styles from './JobCard.styles';
 
-function JobCard({data}) {
+function JobCard({data, navigation}) {
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'flex-start'}}>
