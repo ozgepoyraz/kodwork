@@ -4,6 +4,7 @@ import {FlatList, TouchableWithoutFeedback} from 'react-native-gesture-handler';
 import styles from './Jobs.styles';
 import useFetch from '../../hooks/useFetch';
 import JobCard from '../../components/JobCard';
+import LottieLoading from '../../components/LottieLoading';
 
 function Jobs({navigation}) {
   const {data, loading, error} = useFetch();
@@ -11,7 +12,7 @@ function Jobs({navigation}) {
   return (
     <View style={styles.container}>
       {loading == true ? (
-        <ActivityIndicator color="blue" />
+        <LottieLoading></LottieLoading>
       ) : (
         <FlatList
           data={data}
@@ -19,7 +20,6 @@ function Jobs({navigation}) {
             <TouchableWithoutFeedback
               onPress={() => {
                 navigation.navigate('Details', {item});
-                console.log('basıdi');
               }}>
               <JobCard data={item}></JobCard>
             </TouchableWithoutFeedback>

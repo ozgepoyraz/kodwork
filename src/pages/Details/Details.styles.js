@@ -34,6 +34,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e0e0e0',
   },
+  buttons_container: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#ef5350',
+    margin: 10,
+    padding: 15,
+    borderRadius: 8,
+  },
+  button_title: {
+    color: 'white',
+    fontSize: 17,
+    fontWeight: 'bold',
+    margin: 3,
+  },
 });
 
 export default styles;
