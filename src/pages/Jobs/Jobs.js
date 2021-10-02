@@ -21,7 +21,7 @@ function Jobs({navigation}) {
               onPress={() => {
                 navigation.navigate('Details', {item});
               }}>
-              <JobCard data={item}></JobCard>
+              <JobCard data={item} isFavorite={false}></JobCard>
             </TouchableWithoutFeedback>
           )}
         />

@@ -1,18 +1,13 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  ScrollView,
-  TouchableWithoutFeedback,
-  Button,
-} from 'react-native';
+import {Text, View, ScrollView, TouchableWithoutFeedback} from 'react-native';
 import styles from './Details.styles';
 import HTMLView from 'react-native-htmlview';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useDispatch} from 'react-redux';
 
 function Details({route}) {
   const {item} = route.params;
-  console.log(item.name);
+  const dispatch = useDispatch();
 
   return (
     <ScrollView>
@@ -39,7 +34,13 @@ function Details({route}) {
             <Text style={styles.button_title}>Submit</Text>
           </View>
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
+          onPress={() =>
+            dispatch({
+              type: 'ADD_JOB',
+              payload: {favoriteJob: item},
+            })
+          }>
           <View style={styles.button}>
             <Icon style={styles.button_title} name="cards-heart"></Icon>
             <Text style={styles.button_title}>Favorite Job</Text>

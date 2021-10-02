@@ -9,14 +9,13 @@ const useFetch = () => {
   async function fetchData() {
     try {
       const {data} = await axios.get(
-        'https://www.themuse.com/api/public/jobs?page=1',
+        'https://www.themuse.com/api/public/jobs?page=2',
       );
       setData(data.results);
       setLoading(false);
     } catch (err) {
       setLoading(false);
       setError(true);
-
     }
   }
 

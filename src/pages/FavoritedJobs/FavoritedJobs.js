@@ -1,8 +1,25 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
+import {useSelector, useDispatch} from 'react-redux';
+import JobCard from '../../components/JobCard';
 
 const FavoritedJobs = () => {
-  return <Text>jdfkshf</Text>;
+  const jobList = useSelector(s => s.favoriteJobList);
+  const dispatch = useDispatch();
+
+  return (
+    jobList && (
+      <FlatList
+        data={jobList}
+        renderItem={({item}) => (
+          <View>
+            <JobCard data={item} isFavorite={true}></JobCard>
+          </View>
+        )}
+      />
+    )
+  );
 };
 
 export default FavoritedJobs;

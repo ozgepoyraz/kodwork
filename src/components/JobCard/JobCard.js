@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableWithoutFeedback} from 'react-native';
+import {useDispatch} from 'react-redux';
 import styles from './JobCard.styles';
 
-function JobCard({data}) {
+function JobCard({data, isFavorite}) {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'flex-start'}}>
@@ -13,6 +15,16 @@ function JobCard({data}) {
       <View style={{alignItems: 'flex-end'}}>
         <Text style={styles.level}>{data.levels[0].name}</Text>
       </View>
+      {isFavorite && (
+        <TouchableWithoutFeedback
+          onPress={() =>
+            dispatch({type: 'REMOVE_JOB', payload: {name: data.name}})
+          }>
+          <View style={styles.remove_button}>
+            <Text style={styles.remove_button_title}>Remove</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      )}
     </View>
   );
 }

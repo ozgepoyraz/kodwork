@@ -6,6 +6,7 @@ import Details from './pages/Details';
 import 'react-native-gesture-handler';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import FavoritedJobs from './pages/FavoritedJobs';
+import JobProvider from '../context/Provider';
 
 function App() {
   const Stack = createStackNavigator();
@@ -34,33 +35,35 @@ function App() {
   };
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen
-          name="Jobs"
-          component={jobsStack}
-          options={{
-            headerShown: false,
-            drawerActiveBackgroundColor: '#fdeaea',
-            drawerActiveTintColor: '#ef5552',
-            drawerInactiveBackgroundColor: 'white',
-            drawerInactiveTintColor: '#6c6c6d',
-          }}
-        />
-        <Drawer.Screen
-          name="Favorited Jobs"
-          component={FavoritedJobs}
-          options={{
-            headerTitleAlign: 'center',
-            headerTintColor: '#ef5350',
-            drawerActiveBackgroundColor: '#fdeaea',
-            drawerActiveTintColor: '#ef5552',
-            drawerInactiveBackgroundColor: 'white',
-            drawerInactiveTintColor: '#6c6c6d',
-          }}
-        />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <JobProvider>
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen
+            name="Jobs"
+            component={jobsStack}
+            options={{
+              headerShown: false,
+              drawerActiveBackgroundColor: '#fdeaea',
+              drawerActiveTintColor: '#ef5552',
+              drawerInactiveBackgroundColor: 'white',
+              drawerInactiveTintColor: '#6c6c6d',
+            }}
+          />
+          <Drawer.Screen
+            name="Favorited Jobs"
+            component={FavoritedJobs}
+            options={{
+              headerTitleAlign: 'center',
+              headerTintColor: '#ef5350',
+              drawerActiveBackgroundColor: '#fdeaea',
+              drawerActiveTintColor: '#ef5552',
+              drawerInactiveBackgroundColor: 'white',
+              drawerInactiveTintColor: '#6c6c6d',
+            }}
+          />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </JobProvider>
   );
 }
 export default App;

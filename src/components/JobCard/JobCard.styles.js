@@ -28,6 +28,20 @@ const styles = StyleSheet.create({
     color: '#ef5350',
     fontWeight: 'bold',
   },
+  remove_button: {
+    flex: 1,
+    backgroundColor: '#ef5350',
+    margin: 10,
+    padding: 8,
+    borderRadius: 8,
+  },
+  remove_button_title: {
+    color: 'white',
+    fontSize: 17,
+    fontWeight: 'bold',
+    margin: 3,
+    textAlign: 'center',
+  },
 });
 
 export default styles;
